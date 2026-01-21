@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IOPFest — Rome • One-day Event</title>
+    <meta
+      name="description"
+      content="IOPFest is a one-day event in Rome bringing people together for ideas, demos, and discussion."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f2e9;
+        --ink: #1e1b17;
+        --muted: #6a6159;
+        --accent: #b45a3c;
+        --accent-2: #2f6f6b;
+        --card: #fff7ec;
+        --line: #e2d6c7;
+        --shadow: 0 18px 50px rgba(30, 27, 23, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+        background: radial-gradient(1200px 800px at 85% -10%, #f2dcc3 0%, rgba(242, 220, 195, 0) 55%),
+          radial-gradient(900px 600px at -10% 20%, #dfe9e3 0%, rgba(223, 233, 227, 0) 60%),
+          var(--bg);
+        color: var(--ink);
+        min-height: 100vh;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 8px 0 32px;
+      }
+
+      nav {
+        display: flex;
+        gap: 18px;
+        font-size: 0.95rem;
+      }
+
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        padding-bottom: 2px;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s ease;
+      }
+
+      nav a:hover {
+        border-color: var(--accent);
+        color: var(--ink);
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.02em;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 32px;
+        align-items: center;
+        padding: 32px 0 48px;
+      }
+
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.6rem, 4vw, 4rem);
+        margin: 0 0 16px;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+        color: var(--muted);
+        line-height: 1.6;
+        margin: 0 0 20px;
+      }
+
+      .pill {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--ink);
+        color: #fdf8f1;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-weight: 600;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s ease;
+      }
+
+      .cta:hover {
+        transform: translateY(-2px);
+      }
+
+      .highlight {
+        display: grid;
+        gap: 18px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .highlight strong {
+        font-size: 1.1rem;
+        letter-spacing: 0.01em;
+      }
+
+      section {
+        margin-top: 64px;
+      }
+
+      section h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        margin-bottom: 16px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .card {
+        background: #fffaf2;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 20px;
+        min-height: 150px;
+        box-shadow: 0 12px 30px rgba(30, 27, 23, 0.08);
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+      }
+
+      .card p,
+      .card ul {
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      .muted {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .program-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .program-item {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 14px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: #fffdf8;
+      }
+
+      .program-item.is-break {
+        opacity: 0.65;
+        background: #f6efe6;
+      }
+
+      .abstract {
+        margin-top: 8px;
+      }
+
+      .abstract summary {
+        cursor: pointer;
+        color: var(--accent-2);
+        font-weight: 600;
+        list-style: none;
+      }
+
+      .abstract summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .abstract p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .abstract-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, opacity 0.35s ease;
+      }
+
+      .abstract[open] .abstract-content {
+        max-height: 200px;
+        opacity: 1;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .faq-item {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px 18px;
+        background: #fffdf8;
+      }
+
+      .faq-item summary {
+        cursor: pointer;
+        font-weight: 600;
+        list-style: none;
+      }
+
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-answer {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, opacity 0.35s ease;
+      }
+
+      .faq-item[open] .faq-answer {
+        max-height: 200px;
+        opacity: 1;
+      }
+
+      .faq-answer p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .program-time {
+        font-weight: 600;
+        color: var(--accent);
+        line-height: 1.1;
+      }
+
+      .program-time span {
+        display: block;
+      }
+
+      .organizers {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+      }
+
+      .organizer {
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: #fffdf8;
+      }
+
+      .organizer-photo {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: linear-gradient(135deg, #f0e6d8, #f9f3ea);
+      }
+
+      .organizer span {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      footer {
+        margin-top: 80px;
+        padding: 24px 0 12px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 0.9rem;
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .fade-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 700px) {
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .program-item {
+          grid-template-columns: 1fr;
+        }
+
+        .organizers {
+          grid-template-columns: 1fr;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="logo">IOPFest</div>
+        <nav>
+          <a href="#program">Program</a>
+          <a href="#about">About</a>
+          <a href="#logistics">Logistics</a>
+          <a href="#organizers">Organizers</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="fade-up">
+          <div class="pill">Rome · One-day gathering · 2026</div>
+          <h1>IOPFest</h1>
+          <p>
+            Join us in celebrating 10 years since the introduction of the Interactive Oracle Proof (IOP)!
+          </p>
+          <a class="cta" href="mailto:hello@iopfest.org">Get in touch →</a>
+        </div>
+        <div class="highlight fade-up">
+          <strong>Quick facts</strong>
+          <div>📍 Rome, Italy</div>
+          <div>
+            🏛️ Courtyard by Marriott Rome Central Park ·
+            <a href="https://maps.google.com/?q=Courtyard+by+Marriott+Rome+Central+Park">Map</a>
+          </div>
+          <div>🗓️ Saturday, 9 May 2026</div>
+          <div>⏰ 09:30 – 19:30</div>
+          <div>
+            🎟️ Register via
+            <a href="https://eurocrypt.iacr.org/2026/affiliated.php">EC affiliated events</a>
+            or
+            <a href="https://zkproof.org/events/zkproof-8-rome/">ZKProof 8</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="program" class="fade-up">
+        <h2>Program</h2>
+        <div class="program-list">
+          <div class="program-item">
+            <div class="program-time">
+              <span>09:30</span>
+              <span>10:30</span>
+            </div>
+            <div>
+              <strong>Alessandro Chiesa</strong>
+              <span class="muted">· EPFL</span>
+              <div class="muted">Proximity testing to Reed--Solomon codes</div>
+              <details class="abstract">
+                <summary>Abstract</summary>
+                <div class="abstract-content">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut
+                    venenatis nunc.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="program-time">
+              <span>10:30</span>
+              <span>11:30</span>
+            </div>
+            <div>
+              <strong>Pratyush Mishra</strong>
+              <span class="muted">· UPenn</span>
+              <div class="muted">Query-optimal IOPs of proximity</div>
+              <details class="abstract">
+                <summary>Abstract</summary>
+                <div class="abstract-content">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut
+                    venenatis nunc.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="program-time">
+              <span>11:30</span>
+              <span>12:30</span>
+            </div>
+            <div>
+              <strong>Noor Athamnah</strong>
+              <span class="muted">· Technion</span>
+              <div class="muted">IOPs for boolean circuits</div>
+              <details class="abstract">
+                <summary>Abstract</summary>
+                <div class="abstract-content">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut
+                    venenatis nunc.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="program-item is-break">
+            <div class="program-time">
+              <span>12:30</span>
+              <span>13:30</span>
+            </div>
+            <div>
+              <strong>Lunch break</strong>
+              <div class="muted">Walkable options nearby</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="program-time">
+              <span>13:30</span>
+              <span>14:30</span>
+            </div>
+            <div>
+              <strong>Dan Boneh</strong>
+              <span class="muted">· Stanford University</span>
+              <div class="muted">Proximity gaps conjectures</div>
+              <details class="abstract">
+                <summary>Abstract</summary>
+                <div class="abstract-content">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut
+                    venenatis nunc.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="program-time">
+              <span>14:30</span>
+              <span>15:30</span>
+            </div>
+            <div>
+              <strong>William Wang</strong>
+              <span class="muted">· NYU</span>
+              <div class="muted">IORs and hash-based accumulation</div>
+              <details class="abstract">
+                <summary>Abstract</summary>
+                <div class="abstract-content">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut
+                    venenatis nunc.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="program-time">
+              <span>15:30</span>
+              <span>16:30</span>
+            </div>
+            <div>
+              <strong>Open Problems Session</strong>
+              <div class="muted">Group discussion to close the day</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="fade-up">
+        <h2>About the day</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Focus</h3>
+            <p>
+              IOPFest celebrates experimental thinking, practical cryptanalysis, and open exchange. We keep it
+              lightweight, curious, and hands-on.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Format</h3>
+            <p>
+              Short talks, lightning demos, and roomy breaks for coffee and conversation. Bring questions, not
+              slides.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Audience</h3>
+            <p>
+              Researchers, engineers, students, and anyone fascinated by the craft. No prior registration fee,
+              just RSVP.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="logistics" class="fade-up">
+        <h2>Logistics</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Venue</h3>
+            <p>
+              Colocated with <a href="https://zkproof.org/events/zkproof-8-rome/">ZKProof 8</a>.<br />
+              Courtyard by Marriott Rome Central Park<br />
+              Via Giuseppe Moscati 7, 00168 Rome, Italy
+            </p>
+          </div>
+          <div class="card">
+            <h3>Travel</h3>
+            <p>
+              Metro A: Repubblica · Metro B: Termini. Bike parking outside. Taxi stand 2 minutes away.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Accessibility</h3>
+            <p>Step-free entry, accessible restrooms, and quiet corners if you need a break.</p>
+          </div>
+          <div class="card">
+            <h3>Registration</h3>
+            <p>
+              Included with
+              <a href="https://eurocrypt.iacr.org/2026/affiliated.php">Eurocrypt affiliated events</a>
+              or
+              <a href="https://zkproof.org/events/zkproof-8-rome/">ZKProof 8</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="organizers" class="fade-up">
+        <h2>Organizers</h2>
+        <div class="organizers">
+          <div class="organizer">
+            <div class="organizer-photo" aria-hidden="true"></div>
+            <strong>Giacomo Fenzi</strong>
+            <span>EPFL</span>
+          </div>
+          <div class="organizer">
+            <div class="organizer-photo" aria-hidden="true"></div>
+            <strong>Ron Rothblum</strong>
+            <span>Succinct</span>
+          </div>
+          <div class="organizer">
+            <div class="organizer-photo" aria-hidden="true"></div>
+            <strong>Nick Spooner</strong>
+            <span>Cornell</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="fade-up">
+        <h2>FAQ</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>What is an IOP?</summary>
+            <div class="faq-answer">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut
+                venenatis nunc.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <footer>
+        <div>IOPFest · Rome</div>
+        <div>© 2026 IOPFest · Designed with care.</div>
+      </footer>
+    </main>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document.querySelectorAll(".fade-up").forEach((section, index) => {
+        section.style.transitionDelay = `${index * 0.08}s`;
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
