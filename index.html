@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>IOPFest — Rome • One-day Event</title>
+    <title>IOP Frontiers — Rome • One-day Event</title>
     <meta
       name="description"
-      content="IOPFest is a one-day event in Rome bringing people together for ideas, demos, and discussion."
+      content="IOP Frontiers is a one-day event in Rome bringing people together for ideas, demos, and discussion."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -206,6 +206,16 @@
       .program-item.is-break {
         opacity: 0.65;
         background: #f6efe6;
+        padding: 8px 16px;
+      }
+
+      .program-item.is-coffee {
+        grid-template-columns: 1fr;
+        padding: 6px 16px;
+      }
+
+      .program-item.is-coffee .program-time {
+        display: none;
       }
 
       .abstract {
@@ -362,7 +372,7 @@
   <body>
     <main>
       <header>
-        <div class="logo">IOPFest</div>
+        <div class="logo">IOP Frontiers</div>
         <nav>
           <a href="#program">Program</a>
           <a href="#about">About</a>
@@ -375,9 +385,9 @@
       <section class="hero">
         <div class="fade-up">
           <div class="pill">Rome · One-day gathering · 2026</div>
-          <h1>IOPFest</h1>
+          <h1>IOP Frontiers</h1>
           <p>
-            Join us in celebrating 10 years since the introduction of the Interactive Oracle Proof (IOP)!
+            Join us in celebrating a decade of Interactive Oracle Proof advancements in theory and practice.
           </p>
           <a class="cta" href="mailto:hello@iopfest.org">Get in touch →</a>
         </div>
@@ -404,8 +414,18 @@
         <div class="program-list">
           <div class="program-item">
             <div class="program-time">
-              <span>09:30</span>
-              <span>10:30</span>
+              <span>09:00</span>
+              <span>09:15</span>
+            </div>
+            <div>
+              <strong>Giacomo · Nick · Ron</strong>
+              <div class="muted">Introduction</div>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="program-time">
+              <span>09:20</span>
+              <span>10:15</span>
             </div>
             <div>
               <strong>Alessandro Chiesa</strong>
@@ -422,10 +442,19 @@
               </details>
             </div>
           </div>
+          <div class="program-item is-break is-coffee">
+            <div class="program-time">
+              <span>10:15</span>
+              <span>10:30</span>
+            </div>
+            <div>
+              <strong>☕ Coffee break</strong>
+            </div>
+          </div>
           <div class="program-item">
             <div class="program-time">
               <span>10:30</span>
-              <span>11:30</span>
+              <span>11:15</span>
             </div>
             <div>
               <strong>Pratyush Mishra</strong>
@@ -442,10 +471,19 @@
               </details>
             </div>
           </div>
+          <div class="program-item is-break is-coffee">
+            <div class="program-time">
+              <span>11:15</span>
+              <span>11:30</span>
+            </div>
+            <div>
+              <strong>☕ Coffee break</strong>
+            </div>
+          </div>
           <div class="program-item">
             <div class="program-time">
               <span>11:30</span>
-              <span>12:30</span>
+              <span>12:15</span>
             </div>
             <div>
               <strong>Noor Athamnah</strong>
@@ -464,7 +502,7 @@
           </div>
           <div class="program-item is-break">
             <div class="program-time">
-              <span>12:30</span>
+              <span>12:15</span>
               <span>13:30</span>
             </div>
             <div>
@@ -475,7 +513,7 @@
           <div class="program-item">
             <div class="program-time">
               <span>13:30</span>
-              <span>14:30</span>
+              <span>14:15</span>
             </div>
             <div>
               <strong>Dan Boneh</strong>
@@ -492,10 +530,19 @@
               </details>
             </div>
           </div>
+          <div class="program-item is-break is-coffee">
+            <div class="program-time">
+              <span>14:15</span>
+              <span>14:30</span>
+            </div>
+            <div>
+              <strong>☕ Coffee break</strong>
+            </div>
+          </div>
           <div class="program-item">
             <div class="program-time">
               <span>14:30</span>
-              <span>15:30</span>
+              <span>15:15</span>
             </div>
             <div>
               <strong>William Wang</strong>
@@ -512,10 +559,19 @@
               </details>
             </div>
           </div>
+          <div class="program-item is-break is-coffee">
+            <div class="program-time">
+              <span>15:15</span>
+              <span>15:30</span>
+            </div>
+            <div>
+              <strong>☕ Coffee break</strong>
+            </div>
+          </div>
           <div class="program-item">
             <div class="program-time">
               <span>15:30</span>
-              <span>16:30</span>
+              <span>16:15</span>
             </div>
             <div>
               <strong>Open Problems Session</strong>
@@ -526,12 +582,13 @@
       </section>
 
       <section id="about" class="fade-up">
-        <h2>About the day</h2>
+        <h2>IOP Frontiers</h2>
+        <p class="muted">Celebrating 10 Years of Theory &amp; Practice.</p>
         <div class="grid">
           <div class="card">
             <h3>Focus</h3>
             <p>
-              IOPFest celebrates experimental thinking, practical cryptanalysis, and open exchange. We keep it
+              IOP Frontiers celebrates experimental thinking, practical cryptanalysis, and open exchange. We keep it
               lightweight, curious, and hands-on.
             </p>
           </div>
@@ -622,8 +679,8 @@
       </section>
 
       <footer>
-        <div>IOPFest · Rome</div>
-        <div>© 2026 IOPFest · Designed with care.</div>
+        <div>IOP Frontiers · Rome</div>
+        <div>© 2026 IOP Frontiers · Designed with care.</div>
       </footer>
     </main>
 
