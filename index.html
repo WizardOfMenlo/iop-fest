@@ -146,6 +146,99 @@
         letter-spacing: 0.01em;
       }
 
+      .tab-header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tab-button {
+        border: 1px solid var(--line);
+        background: #fdf6eb;
+        color: var(--muted);
+        border-radius: 999px;
+        padding: 6px 14px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      }
+
+      .tab-button:hover {
+        transform: translateY(-1px);
+        color: var(--ink);
+      }
+
+      .tab-button.is-active {
+        background: var(--ink);
+        color: #fdf8f1;
+        border-color: var(--ink);
+      }
+
+      .tab-panel {
+        display: none;
+        gap: 10px;
+      }
+
+      .tab-panel.is-active {
+        display: grid;
+      }
+
+      .live-status {
+        display: grid;
+        gap: 10px;
+      }
+
+      .live-label {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        color: var(--muted);
+      }
+
+      .live-time {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+      }
+
+      .live-time.is-countdown {
+        font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+        font-size: 1.35rem;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.04em;
+      }
+
+      .countdown-segment {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 4px;
+        margin-right: 10px;
+      }
+
+      .countdown-segment:last-child {
+        margin-right: 0;
+      }
+
+      .countdown-unit {
+        font-size: 0.85em;
+        color: var(--muted);
+        text-transform: lowercase;
+      }
+
+      .live-output {
+        display: grid;
+        gap: 6px;
+      }
+
+      .live-title {
+        font-weight: 600;
+      }
+
+      .live-speaker {
+        color: var(--accent-2);
+        font-weight: 600;
+      }
+
       section {
         margin-top: 64px;
       }
@@ -392,19 +485,31 @@
           <a class="cta" href="mailto:hello@iopfest.org">Get in touch →</a>
         </div>
         <div class="highlight fade-up">
-          <strong>Quick facts</strong>
-          <div>📍 Rome, Italy</div>
-          <div>
-            🏛️ Courtyard by Marriott Rome Central Park ·
-            <a href="https://maps.google.com/?q=Courtyard+by+Marriott+Rome+Central+Park">Map</a>
+          <div class="tab-header">
+            <button class="tab-button is-active" type="button" data-tab="facts">Quick facts</button>
+            <button class="tab-button" type="button" data-tab="live">Live status</button>
           </div>
-          <div>🗓️ Saturday, 9 May 2026</div>
-          <div>⏰ 09:30 – 19:30</div>
-          <div>
-            🎟️ Register via
-            <a href="https://eurocrypt.iacr.org/2026/affiliated.php">EC affiliated events</a>
-            or
-            <a href="https://zkproof.org/events/zkproof-8-rome/">ZKProof 8</a>
+          <div class="tab-panel is-active" data-panel="facts">
+            <div>📍 Rome, Italy</div>
+            <div>
+              🏛️ Courtyard by Marriott Rome Central Park ·
+              <a href="https://maps.google.com/?q=Courtyard+by+Marriott+Rome+Central+Park">Map</a>
+            </div>
+            <div>🗓️ Saturday, 9 May 2026</div>
+            <div>⏰ 09:30 – 19:30</div>
+            <div>
+              🎟️ Register via
+              <a href="https://eurocrypt.iacr.org/2026/affiliated.php">EC affiliated events</a>
+              or
+              <a href="https://zkproof.org/events/zkproof-8-rome/">ZKProof 8</a>
+            </div>
+          </div>
+          <div class="tab-panel" data-panel="live">
+            <div class="live-status">
+              <div class="live-label">Live status</div>
+              <div class="live-time" id="live-time">Loading…</div>
+              <div class="live-output" id="live-output">Preparing live schedule…</div>
+            </div>
           </div>
         </div>
       </section>
@@ -700,6 +805,368 @@
         section.style.transitionDelay = `${index * 0.08}s`;
         observer.observe(section);
       });
+
+      const tabButtons = document.querySelectorAll(".tab-button");
+      const tabPanels = document.querySelectorAll(".tab-panel");
+
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.dataset.tab;
+          tabButtons.forEach((tab) => tab.classList.toggle("is-active", tab === button));
+          tabPanels.forEach((panel) => panel.classList.toggle("is-active", panel.dataset.panel === target));
+        });
+      });
+
+      const liveTimeEl = document.getElementById("live-time");
+      const liveOutputEl = document.getElementById("live-output");
+      const eventConfig = {
+        year: 2026,
+        month: 5,
+        day: 9,
+        timeZone: "Europe/Rome"
+      };
+
+      const programSchedule = [
+        {
+          start: "09:00",
+          end: "09:15",
+          type: "talk",
+          title: "Introduction",
+          speaker: "Giacomo · Nick · Ron",
+          abstract: "Welcome and framing for the day."
+        },
+        {
+          start: "09:20",
+          end: "10:15",
+          type: "talk",
+          title: "Proximity testing to Reed--Solomon codes",
+          speaker: "Alessandro Chiesa · EPFL",
+          abstract:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut venenatis nunc."
+        },
+        {
+          start: "10:15",
+          end: "10:30",
+          type: "break",
+          title: "☕ Coffee break"
+        },
+        {
+          start: "10:30",
+          end: "11:15",
+          type: "talk",
+          title: "Query-optimal IOPs of proximity",
+          speaker: "Pratyush Mishra · UPenn",
+          abstract:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut venenatis nunc."
+        },
+        {
+          start: "11:15",
+          end: "11:30",
+          type: "break",
+          title: "☕ Coffee break"
+        },
+        {
+          start: "11:30",
+          end: "12:15",
+          type: "talk",
+          title: "IOPs for boolean circuits",
+          speaker: "Noor Athamnah · Technion",
+          abstract:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut venenatis nunc."
+        },
+        {
+          start: "12:15",
+          end: "13:30",
+          type: "break",
+          title: "Lunch break",
+          note: "Walkable options nearby"
+        },
+        {
+          start: "13:30",
+          end: "14:15",
+          type: "talk",
+          title: "Proximity gaps conjectures",
+          speaker: "Dan Boneh · Stanford University",
+          abstract:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut venenatis nunc."
+        },
+        {
+          start: "14:15",
+          end: "14:30",
+          type: "break",
+          title: "☕ Coffee break"
+        },
+        {
+          start: "14:30",
+          end: "15:15",
+          type: "talk",
+          title: "IORs and hash-based accumulation",
+          speaker: "William Wang · NYU",
+          abstract:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non placerat nisi, ut venenatis nunc."
+        },
+        {
+          start: "15:15",
+          end: "15:30",
+          type: "break",
+          title: "☕ Coffee break"
+        },
+        {
+          start: "15:30",
+          end: "16:15",
+          type: "talk",
+          title: "Open Problems Session",
+          speaker: "Open Problems Session",
+          abstract: "Group discussion to close the day."
+        }
+      ];
+
+      const timeTester = (() => {
+        let overrideMs = null;
+        let enabled = false;
+
+        const parseOverride = (value) => {
+          const match = /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}))?$/.exec(value);
+          if (!match) {
+            return null;
+          }
+          const [, year, month, day, hour, minute, second] = match;
+          return getZonedTimestamp(
+            Number(year),
+            Number(month),
+            Number(day),
+            Number(hour),
+            Number(minute),
+            Number(second || "0")
+          );
+        };
+
+        return {
+          setOverride(value) {
+            const parsed = parseOverride(value);
+            if (!parsed) {
+              console.warn("Use ISO format YYYY-MM-DDTHH:MM or YYYY-MM-DD HH:MM");
+              return;
+            }
+            overrideMs = parsed;
+            enabled = true;
+            console.info("Time override enabled:", value);
+          },
+          clearOverride() {
+            enabled = false;
+            console.info("Time override disabled.");
+          },
+          toggleOverride() {
+            if (!overrideMs) {
+              console.warn("Set an override first via window.IOPTime.setOverride(...)");
+              return;
+            }
+            enabled = !enabled;
+            console.info(`Time override ${enabled ? "enabled" : "disabled"}.`);
+          },
+          getNow() {
+            return new Date(enabled && overrideMs ? overrideMs : Date.now());
+          }
+        };
+      })();
+
+      window.IOPTime = timeTester;
+
+      function getTimeZoneParts(date, timeZone) {
+        const parts = new Intl.DateTimeFormat("en-GB", {
+          timeZone,
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hourCycle: "h23"
+        }).formatToParts(date);
+        return parts.reduce((acc, part) => {
+          if (part.type !== "literal") {
+            acc[part.type] = part.value;
+          }
+          return acc;
+        }, {});
+      }
+
+      function getTimeZoneOffset(timeZone, date) {
+        const parts = getTimeZoneParts(date, timeZone);
+        const iso = `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}Z`;
+        return Date.parse(iso) - date.getTime();
+      }
+
+      function getZonedTimestamp(year, month, day, hour, minute, second) {
+        const utcGuess = Date.UTC(year, month - 1, day, hour, minute, second);
+        const offset = getTimeZoneOffset(eventConfig.timeZone, new Date(utcGuess));
+        return utcGuess - offset;
+      }
+
+      function formatRomeDateTime(date) {
+        return new Intl.DateTimeFormat("en-GB", {
+          timeZone: eventConfig.timeZone,
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hourCycle: "h23"
+        }).format(date);
+      }
+
+      function formatRomeTime(date) {
+        return new Intl.DateTimeFormat("en-GB", {
+          timeZone: eventConfig.timeZone,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hourCycle: "h23"
+        }).format(date);
+      }
+
+      function buildSchedule() {
+        return programSchedule.map((item) => {
+          const [startHour, startMinute] = item.start.split(":").map(Number);
+          const [endHour, endMinute] = item.end.split(":").map(Number);
+          return {
+            ...item,
+            startMs: getZonedTimestamp(eventConfig.year, eventConfig.month, eventConfig.day, startHour, startMinute, 0),
+            endMs: getZonedTimestamp(eventConfig.year, eventConfig.month, eventConfig.day, endHour, endMinute, 0)
+          };
+        });
+      }
+
+      const scheduleWithTimes = buildSchedule();
+      const firstTalkStart = scheduleWithTimes[0].startMs;
+      const lastTalkEnd = scheduleWithTimes[scheduleWithTimes.length - 1].endMs;
+
+      function formatCountdown(seconds) {
+        const days = Math.floor(seconds / 86400);
+        const hours = Math.floor((seconds % 86400) / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = Math.floor(seconds % 60);
+        const parts = [];
+        if (days > 0) {
+          parts.push(`${days}d`);
+        }
+        parts.push(`${String(hours).padStart(2, "0")}h`);
+        parts.push(`${String(minutes).padStart(2, "0")}m`);
+        parts.push(`${String(secs).padStart(2, "0")}s`);
+        return parts.join(" ");
+      }
+
+      function formatCountdownHtml(seconds) {
+        const days = Math.floor(seconds / 86400);
+        const hours = Math.floor((seconds % 86400) / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = Math.floor(seconds % 60);
+        const segments = [];
+        if (days > 0) {
+          segments.push({ value: days, unit: "d" });
+        }
+        segments.push({ value: String(hours).padStart(2, "0"), unit: "h" });
+        segments.push({ value: String(minutes).padStart(2, "0"), unit: "m" });
+        segments.push({ value: String(secs).padStart(2, "0"), unit: "s" });
+        return segments
+          .map(
+            (segment) =>
+              `<span class="countdown-segment"><span class="countdown-number">${segment.value}</span><span class="countdown-unit">${segment.unit}</span></span>`
+          )
+          .join("");
+      }
+
+      function renderCountdownLabel() {
+        return `<div class="live-title">Countdown to the first talk</div>`;
+      }
+
+      function renderTalk(item) {
+        const abstract = item.abstract || "Abstract to be announced.";
+        return `
+          <div class="live-speaker">${item.speaker}</div>
+          <div class="live-title">${item.title} (${item.start}–${item.end})</div>
+          <div class="muted">${abstract}</div>
+        `;
+      }
+
+      function renderBreak(item, nextItem) {
+        const minutes = Math.round((item.endMs - item.startMs) / 60000);
+        const nextLine = nextItem
+          ? `Next: ${nextItem.title} (${nextItem.start}–${nextItem.end})`
+          : "Next: Closing remarks";
+        const note = item.note ? ` • ${item.note}` : "";
+        return `
+          <div class="live-title">${item.title}${note}</div>
+          <div class="live-speaker">${minutes} minute break</div>
+          <div class="muted">${nextLine}</div>
+        `;
+      }
+
+      function renderEventOver() {
+        return `
+          <div class="live-title">The event is over.</div>
+          <div class="muted">Thanks for joining IOP Frontiers in Rome.</div>
+        `;
+      }
+
+      function updateLiveStatus() {
+        if (!liveTimeEl || !liveOutputEl) {
+          return;
+        }
+        const now = timeTester.getNow();
+        const nowParts = getTimeZoneParts(now, eventConfig.timeZone);
+        const nowDateValue =
+          Number(nowParts.year) * 10000 + Number(nowParts.month) * 100 + Number(nowParts.day);
+        const eventDateValue = eventConfig.year * 10000 + eventConfig.month * 100 + eventConfig.day;
+        const nowMs = now.getTime();
+
+        if (nowDateValue < eventDateValue) {
+          const seconds = Math.max(0, Math.floor((firstTalkStart - nowMs) / 1000));
+          liveTimeEl.classList.add("is-countdown");
+          liveTimeEl.innerHTML = formatCountdownHtml(seconds);
+          liveOutputEl.innerHTML = renderCountdownLabel();
+          return;
+        }
+
+        if (nowMs >= lastTalkEnd || nowDateValue > eventDateValue) {
+          liveTimeEl.classList.remove("is-countdown");
+          liveTimeEl.textContent = "Event complete";
+          liveOutputEl.innerHTML = renderEventOver();
+          return;
+        }
+
+        if (nowMs < firstTalkStart) {
+          const seconds = Math.max(0, Math.floor((firstTalkStart - nowMs) / 1000));
+          liveTimeEl.classList.add("is-countdown");
+          liveTimeEl.innerHTML = formatCountdownHtml(seconds);
+          liveOutputEl.innerHTML = renderCountdownLabel();
+          return;
+        }
+
+        const currentIndex = scheduleWithTimes.findIndex((item) => nowMs >= item.startMs && nowMs < item.endMs);
+        const currentItem = scheduleWithTimes[currentIndex];
+        if (!currentItem) {
+          liveTimeEl.classList.remove("is-countdown");
+          liveTimeEl.textContent = "Event complete";
+          liveOutputEl.innerHTML = renderEventOver();
+          return;
+        }
+
+        if (currentItem.type === "break") {
+          liveTimeEl.classList.remove("is-countdown");
+          liveTimeEl.textContent = "Break";
+          liveOutputEl.innerHTML = renderBreak(currentItem, scheduleWithTimes[currentIndex + 1]);
+          return;
+        }
+
+        liveTimeEl.classList.remove("is-countdown");
+        liveTimeEl.textContent = "Now speaking";
+        liveOutputEl.innerHTML = renderTalk(currentItem);
+      }
+
+      updateLiveStatus();
+      setInterval(updateLiveStatus, 1000);
     </script>
   </body>
 </html>
