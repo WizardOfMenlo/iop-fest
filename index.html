@@ -381,46 +381,6 @@
         opacity: 1;
       }
 
-      .faq-list {
-        display: grid;
-        gap: 16px;
-      }
-
-      .faq-item {
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 16px 18px;
-        background: #fffdf8;
-      }
-
-      .faq-item summary {
-        cursor: pointer;
-        font-weight: 600;
-        list-style: none;
-      }
-
-      .faq-item summary::-webkit-details-marker {
-        display: none;
-      }
-
-      .faq-answer {
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        transition: max-height 0.35s ease, opacity 0.35s ease;
-      }
-
-      .faq-item[open] .faq-answer {
-        max-height: 200px;
-        opacity: 1;
-      }
-
-      .faq-answer p {
-        margin: 10px 0 0;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
       .program-time {
         font-weight: 600;
         color: var(--accent);
@@ -509,7 +469,6 @@
           <a href="#logistics">Logistics</a>
           <a href="#speakers">Speakers</a>
           <a href="#organizers">Organizers</a>
-          <a href="#faq">FAQ</a>
         </nav>
       </header>
 
@@ -562,7 +521,7 @@
           <div class="program-item">
             <div class="program-time">
               <span>09:00</span>
-              <span>09:15</span>
+              <span>09:05</span>
             </div>
             <div>
               <strong>Giacomo · Nick · Ron</strong>
@@ -571,8 +530,8 @@
           </div>
           <div class="program-item">
             <div class="program-time">
-              <span>09:20</span>
-              <span>10:15</span>
+              <span>09:05</span>
+              <span>09:50</span>
             </div>
             <div>
               <strong>Alessandro Chiesa</strong>
@@ -588,8 +547,8 @@
           </div>
           <div class="program-item is-break is-coffee">
             <div class="program-time">
+              <span>09:50</span>
               <span>10:15</span>
-              <span>10:30</span>
             </div>
             <div>
               <strong>☕ Coffee break</strong>
@@ -597,8 +556,8 @@
           </div>
           <div class="program-item">
             <div class="program-time">
-              <span>10:30</span>
-              <span>11:15</span>
+              <span>10:15</span>
+              <span>11:00</span>
             </div>
             <div>
               <strong>Pratyush Mishra</strong>
@@ -614,8 +573,8 @@
           </div>
           <div class="program-item is-break is-coffee">
             <div class="program-time">
+              <span>11:00</span>
               <span>11:15</span>
-              <span>11:30</span>
             </div>
             <div>
               <strong>☕ Coffee break</strong>
@@ -623,8 +582,8 @@
           </div>
           <div class="program-item">
             <div class="program-time">
-              <span>11:30</span>
-              <span>12:15</span>
+              <span>11:15</span>
+              <span>12:00</span>
             </div>
             <div>
               <strong>Noor Athamnah</strong>
@@ -640,8 +599,8 @@
           </div>
           <div class="program-item is-break">
             <div class="program-time">
-              <span>12:15</span>
-              <span>13:30</span>
+              <span>12:00</span>
+              <span>13:15</span>
             </div>
             <div>
               <strong>Lunch break</strong>
@@ -650,8 +609,8 @@
           </div>
           <div class="program-item">
             <div class="program-time">
-              <span>13:30</span>
-              <span>14:15</span>
+              <span>13:15</span>
+              <span>14:00</span>
             </div>
             <div>
               <!-- Dan Boneh · Stanford University -->
@@ -667,8 +626,8 @@
           </div>
           <div class="program-item is-break is-coffee">
             <div class="program-time">
+              <span>14:00</span>
               <span>14:15</span>
-              <span>14:30</span>
             </div>
             <div>
               <strong>☕ Coffee break</strong>
@@ -676,8 +635,8 @@
           </div>
           <div class="program-item">
             <div class="program-time">
-              <span>14:30</span>
-              <span>15:15</span>
+              <span>14:15</span>
+              <span>15:00</span>
             </div>
             <div>
               <strong>William Wang</strong>
@@ -693,8 +652,8 @@
           </div>
           <div class="program-item is-break is-coffee">
             <div class="program-time">
+              <span>15:00</span>
               <span>15:15</span>
-              <span>15:30</span>
             </div>
             <div>
               <strong>☕ Coffee break</strong>
@@ -702,8 +661,8 @@
           </div>
           <div class="program-item">
             <div class="program-time">
-              <span>15:30</span>
-              <span>16:15</span>
+              <span>15:15</span>
+              <span>16:00</span>
             </div>
             <div>
               <strong>Open Problems Session</strong>
@@ -811,38 +770,6 @@
         </div>
       </section>
 
-      <section id="faq" class="fade-up">
-        <h2>FAQ</h2>
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary>How do I register?</summary>
-            <div class="faq-answer">
-              <p>
-                Registration is either via
-              <a href="https://eurocrypt.iacr.org/2026/affiliated.php">EC affiliated events</a>
-              or
-              <a href="https://zkproof.org/events/zkproof-8-rome/">ZKProof 8</a> 
-              </p>
-            </div>
-          </details>        
-          <details class="faq-item">
-            <summary>What is an IOP?</summary>
-            <div class="faq-answer">
-              <p>
-                An IOP is an interactive version of a PCP. Alternatively, it is an interactive proof where the verifier does not fully read the prover's messages.
-              </p>
-            </div>
-          </details>
-          <details class="faq-item">
-            <summary>What is a PCP?</summary>
-            <div class="faq-answer">
-              <p>
-                A PCP is a non-interactive version of an IOP. Alternatively, it is a NP witness which the decider does not read in full.
-              </p>
-            </div>
-          </details>
-        </div>
-      </section>
 
       <footer>
         <div>IOP Fest · Rome</div>
@@ -890,86 +817,86 @@
       const programSchedule = [
         {
           start: "09:00",
-          end: "09:15",
+          end: "09:05",
           type: "talk",
           title: "Introduction",
           speaker: "Giacomo · Ron · Nick",
           abstract: "A few words from the organizers."
         },
         {
-          start: "09:20",
-          end: "10:15",
+          start: "09:05",
+          end: "09:50",
           type: "talk",
           title: "Proximity testing to Reed--Solomon codes",
           speaker: "Alessandro Chiesa · EPFL",
           abstract: "TBA"
         },
         {
-          start: "10:15",
-          end: "10:30",
+          start: "09:50",
+          end: "10:15",
           type: "break",
           title: "☕ Coffee break"
         },
         {
-          start: "10:30",
-          end: "11:15",
+          start: "10:15",
+          end: "11:00",
           type: "talk",
           title: "Query-optimal IOPs of proximity",
           speaker: "Pratyush Mishra · UPenn",
           abstract: "TBA"
         },
         {
-          start: "11:15",
-          end: "11:30",
+          start: "11:00",
+          end: "11:15",
           type: "break",
           title: "☕ Coffee break"
         },
         {
-          start: "11:30",
-          end: "12:15",
+          start: "11:15",
+          end: "12:00",
           type: "talk",
           title: "IOPs for boolean circuits",
           speaker: "Noor Athamnah · Technion",
           abstract: "TBA"
         },
         {
-          start: "12:15",
-          end: "13:30",
+          start: "12:00",
+          end: "13:15",
           type: "break",
           title: "Lunch break",
           note: "Walkable options nearby"
         },
         {
-          start: "13:30",
-          end: "14:15",
+          start: "13:15",
+          end: "14:00",
           type: "talk",
           title: "Proximity gaps conjectures",
           speaker: "TBA",
           abstract: "TBA"
         },
         {
-          start: "14:15",
-          end: "14:30",
+          start: "14:00",
+          end: "14:15",
           type: "break",
           title: "☕ Coffee break"
         },
         {
-          start: "14:30",
-          end: "15:15",
+          start: "14:15",
+          end: "15:00",
           type: "talk",
           title: "IORs and hash-based accumulation",
           speaker: "William Wang · NYU",
           abstract: "TBA"
         },
         {
-          start: "15:15",
-          end: "15:30",
+          start: "15:00",
+          end: "15:15",
           type: "break",
           title: "☕ Coffee break"
         },
         {
-          start: "15:30",
-          end: "16:15",
+          start: "15:15",
+          end: "16:00",
           type: "talk",
           title: "Open Problems Session",
           speaker: "Open Problems Session",
