@@ -516,7 +516,6 @@
 
       <section id="program" class="fade-up">
         <h2>Program</h2>
-        <p class="muted">(subject to change)</p>
         <div class="program-list">
           <div class="program-item">
             <div class="program-time">
@@ -577,7 +576,7 @@
               <span>14:00</span>
             </div>
             <div>
-              <strong>Break</strong>
+              <strong>Break & Lunch</strong>
             </div>
           </div>
           <div class="program-item">
@@ -1114,7 +1113,7 @@
 
         if (currentItem.type === "break") {
           liveTimeEl.classList.remove("is-countdown");
-          liveTimeEl.textContent = "Break";
+          liveTimeEl.textContent = currentItem.title || "Break";
           liveOutputEl.innerHTML = renderBreak(currentItem, scheduleWithTimes[currentIndex + 1]);
           return;
         }
