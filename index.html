@@ -114,6 +114,13 @@
         color: var(--muted);
       }
 
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
       .cta {
         display: inline-flex;
         align-items: center;
@@ -126,6 +133,10 @@
         font-weight: 600;
         box-shadow: var(--shadow);
         transition: transform 0.2s ease;
+      }
+
+      .cta.is-live {
+        background: var(--live-dot);
       }
 
       .cta:hover {
@@ -465,6 +476,7 @@
         <div class="logo">IOP Fest</div>
         <nav>
           <a href="#program">Program</a>
+          <a href="https://www.youtube.com/live/Kla_3rFN-5s?si=tNVfU8xXrdGxN4Jx" target="_blank" rel="noopener">Livestream</a>
           <a href="#about">About</a>
           <a href="#logistics">Logistics</a>
           <a href="#speakers">Speakers</a>
@@ -479,7 +491,10 @@
           <p>
             Join us in celebrating a decade of advances in Interactive Oracle Proofs in theory and practice.
           </p>
-          <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfw637_ovKNOXehCN97-d7YHv8zGvTuXMJI7yQvFIknouTFlg/viewform?usp=header">Register now →</a>
+          <div class="cta-row">
+            <a class="cta is-live" href="https://www.youtube.com/live/Kla_3rFN-5s?si=tNVfU8xXrdGxN4Jx" target="_blank" rel="noopener">Watch livestream →</a>
+            <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfw637_ovKNOXehCN97-d7YHv8zGvTuXMJI7yQvFIknouTFlg/viewform?usp=header">Register now →</a>
+          </div>
         </div>
         <div class="highlight fade-up">
           <div class="tab-header">
@@ -498,6 +513,9 @@
             <div>🗓️ Saturday, 9 May 2026</div>
             <div>⏰ 09:00 – 18:00</div>
             <div>
+              🔴 <a href="https://www.youtube.com/live/Kla_3rFN-5s?si=tNVfU8xXrdGxN4Jx" target="_blank" rel="noopener">Open the livestream on YouTube</a>
+            </div>
+            <div>
               🎟️ Register via
               <a href="https://eurocrypt.iacr.org/2026/affiliated.php">EC affiliated events</a>
               or
@@ -508,6 +526,9 @@
             <div class="live-status">
               <div class="live-label">Live status</div>
               <div class="live-time" id="live-time">Loading…</div>
+              <div>
+                🔴 <a href="https://www.youtube.com/live/Kla_3rFN-5s?si=tNVfU8xXrdGxN4Jx" target="_blank" rel="noopener">Open livestream on YouTube</a>
+              </div>
               <div class="live-output" id="live-output">Preparing live schedule…</div>
             </div>
           </div>
