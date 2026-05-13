@@ -392,6 +392,28 @@
         transform: translateX(3px);
       }
 
+      .talk-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .talk-actions .talk-link {
+        margin-top: 8px;
+      }
+
+      .slides-link {
+        background: rgba(47, 111, 107, 0.1);
+        border-color: rgba(47, 111, 107, 0.28);
+        color: var(--accent-2);
+      }
+
+      .slides-link:hover {
+        background: rgba(47, 111, 107, 0.16);
+        border-color: rgba(47, 111, 107, 0.45);
+      }
+
       .abstract {
         margin-top: 8px;
       }
@@ -582,7 +604,10 @@
               <strong>Pratyush Mishra</strong>
               <span class="muted">· UPenn</span>
               <div class="muted">The Quest for Optimal IOPs</div>
-              <a class="talk-link" href="https://www.youtube.com/watch?v=1cveMf2jFnI">Watch talk</a>
+              <div class="talk-actions">
+                <a class="talk-link" href="https://www.youtube.com/watch?v=1cveMf2jFnI">Watch talk</a>
+                <a class="talk-link slides-link" href="slides/2026-05-09%20-%20ZKProof%20Workshop%20-%20The%20Quest%20for%20Optimal%20IOPs.pdf">View slides</a>
+              </div>
               <details class="abstract">
                 <summary>Abstract</summary>
                 <div class="abstract-content">
@@ -609,7 +634,10 @@
               <strong>Dan Boneh</strong>
               <span class="muted">· Stanford University</span>
               <div class="muted">The Proximity Prize: what it is and what we currently know</div>
-              <a class="talk-link" href="https://www.youtube.com/watch?v=ffnVasmjRDw">Watch talk</a>
+              <div class="talk-actions">
+                <a class="talk-link" href="https://www.youtube.com/watch?v=ffnVasmjRDw">Watch talk</a>
+                <a class="talk-link slides-link" href="slides/proximity.pdf">View slides</a>
+              </div>
               <details class="abstract">
                 <summary>Abstract</summary>
                 <div class="abstract-content">
@@ -636,7 +664,10 @@
               <strong>Alessandro Chiesa</strong>
               <span class="muted">· EPFL</span>
               <div class="muted">Close Enough: From Linear Codes to Proximity Tests</div>
-              <a class="talk-link" href="https://www.youtube.com/watch?v=IOT2qKNOMgA">Watch talk</a>
+              <div class="talk-actions">
+                <a class="talk-link" href="https://www.youtube.com/watch?v=IOT2qKNOMgA">Watch talk</a>
+                <a class="talk-link slides-link" href="slides/2026-05-09%20-%20close%20enough.pdf">View slides</a>
+              </div>
               <details class="abstract">
                 <summary>Abstract</summary>
                 <div class="abstract-content">
@@ -654,7 +685,10 @@
               <strong>Noor Athamnah</strong>
               <span class="muted">· Harvard University</span>
               <div class="muted">Linear Prover IOPs in Log Star Rounds</div>
-              <a class="talk-link" href="https://www.youtube.com/watch?v=Gpcc5O8Rglo">Watch talk</a>
+              <div class="talk-actions">
+                <a class="talk-link" href="https://www.youtube.com/watch?v=Gpcc5O8Rglo">Watch talk</a>
+                <a class="talk-link slides-link" href="slides/logstar.pdf">View slides</a>
+              </div>
               <details class="abstract">
                 <summary>Abstract</summary>
                 <div class="abstract-content">
@@ -681,7 +715,10 @@
               <strong>William Wang</strong>
               <span class="muted">· NYU</span>
               <div class="muted">Interactive Oracle Reductions</div>
-              <a class="talk-link" href="https://www.youtube.com/watch?v=kfa7Z7W3Dew">Watch talk</a>
+              <div class="talk-actions">
+                <a class="talk-link" href="https://www.youtube.com/watch?v=kfa7Z7W3Dew">Watch talk</a>
+                <a class="talk-link slides-link" href="slides/interactive-oracle-reductions.pdf">View slides</a>
+              </div>
               <details class="abstract">
                 <summary>Abstract</summary>
                 <div class="abstract-content">
@@ -861,7 +898,8 @@
           title: "The Quest for Optimal IOPs",
           speaker: "Pratyush Mishra · UPenn",
           abstract: "Prover time and query complexity are two fundamental efficiency metrics for Interactive Oracle Proofs. Over the last decade, the community has expended tremendous effort in designing IOPs that optimize these metrics, culminating in recent work that achieves the best efficiency possible when aiming for negligible 2<sup>-λ</sup> soundness error: linear prover time, and O(λ) query complexity. In this talk, I will recount the journey towards these “optimal” protocols by analyzing the key steps through a unified lens.",
-          recordingUrl: "https://www.youtube.com/watch?v=1cveMf2jFnI"
+          recordingUrl: "https://www.youtube.com/watch?v=1cveMf2jFnI",
+          slidesUrl: "slides/2026-05-09%20-%20ZKProof%20Workshop%20-%20The%20Quest%20for%20Optimal%20IOPs.pdf"
         },
         {
           start: "10:00",
@@ -876,7 +914,8 @@
           title: "The Proximity Prize: what it is and what we currently know",
           speaker: "Dan Boneh · Stanford University",
           abstract: "The Ethereum Foundation recently announced the Proximity Prize which aims to resolve some open questions that play an important role in the design of succinct code-based proof systems. In this talk we will define the core questions that the Proximity Prize aims to resolve. We will survey what is currently known, and why these questions are important to the design of proof systems. This is joint work with Gal Arnon and Giacomo Fenzi available at eprint.iacr.org/2026/680.",
-          recordingUrl: "https://www.youtube.com/watch?v=ffnVasmjRDw"
+          recordingUrl: "https://www.youtube.com/watch?v=ffnVasmjRDw",
+          slidesUrl: "slides/proximity.pdf"
         },
         {
           start: "11:00",
@@ -891,7 +930,8 @@
           title: "Close Enough: From Linear Codes to Proximity Tests",
           speaker: "Alessandro Chiesa · EPFL",
           abstract: "Proximity tests are the probabilistic core of many IOP constructions. In this talk I will survey some of the main ideas that underlie constructions of modern proximity tests. I will highlight how, starting from only the basic structure of a linear code, one can obtain versatile and efficient proximity tests.",
-          recordingUrl: "https://www.youtube.com/watch?v=IOT2qKNOMgA"
+          recordingUrl: "https://www.youtube.com/watch?v=IOT2qKNOMgA",
+          slidesUrl: "slides/2026-05-09%20-%20close%20enough.pdf"
         },
         {
           start: "14:50",
@@ -900,7 +940,8 @@
           title: "Linear Prover IOPs in Log Star Rounds",
           speaker: "Noor Athamnah · Harvard University",
           abstract: "Interactive Oracle Proofs (IOPs) are a central building block in modern proof and argument systems. Two important parameters of an IOP are prover efficiency and round complexity, both of which play a major role in the efficiency of the resulting argument systems. In this talk I will discuss a line of work exploring the tradeoff between these two quantities, and then delve into a recent result obtaining linear prover complexity in log star rounds.",
-          recordingUrl: "https://www.youtube.com/watch?v=Gpcc5O8Rglo"
+          recordingUrl: "https://www.youtube.com/watch?v=Gpcc5O8Rglo",
+          slidesUrl: "slides/logstar.pdf"
         },
         {
           start: "15:40",
@@ -915,7 +956,8 @@
           title: "Interactive Oracle Reductions",
           speaker: "William Wang · NYU",
           abstract: "Interactive oracle reductions (IORs), a generalization of IOPs, are emerging as the central object underlying hash-based proof systems. Besides enabling modular constructions of succinct arguments, IORs yield lightweight primitives such as accumulation and folding schemes. In this talk I will introduce IORs and discuss recent advances in their design.",
-          recordingUrl: "https://www.youtube.com/watch?v=kfa7Z7W3Dew"
+          recordingUrl: "https://www.youtube.com/watch?v=kfa7Z7W3Dew",
+          slidesUrl: "slides/interactive-oracle-reductions.pdf"
         },
         {
           start: "17:00",
@@ -1097,13 +1139,17 @@
         const abstract = item.abstract || "Abstract to be announced.";
         const speakerLine = item.speaker ? `<div class="live-speaker">${item.speaker}</div>` : "";
         const notePrefix = item.note ? `${item.note} · ` : "";
-        const recordingLink = item.recordingUrl
-          ? `<a class="talk-link" href="${item.recordingUrl}">Watch talk</a>`
-          : "";
+        const links = [
+          item.recordingUrl ? `<a class="talk-link" href="${item.recordingUrl}">Watch talk</a>` : "",
+          item.slidesUrl ? `<a class="talk-link slides-link" href="${item.slidesUrl}">View slides</a>` : ""
+        ]
+          .filter(Boolean)
+          .join("");
+        const actionLinks = links ? `<div class="talk-actions">${links}</div>` : "";
         return `
           ${speakerLine}
           <div class="live-title">${notePrefix}${item.title} (${formatTimeRange(item)})</div>
-          ${recordingLink}
+          ${actionLinks}
           <div class="muted">${abstract}</div>
         `;
       }
